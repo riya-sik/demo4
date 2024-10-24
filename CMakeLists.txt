@@ -31,5 +31,5 @@ endif()
 add_subdirectory(submodule)
 
 # Create the main executable
-add_executable(main demo3main.c)
+add_executable(main main.c)
 target_link_libraries(main submodule)
