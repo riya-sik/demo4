@@ -16,7 +16,7 @@ if(NOT GIT_CHECK EQUAL 0)
 endif()
 
 # Check if the submodule directory exists
-if(NOT EXISTS "${CMAKE_SOURCE_DIR}/submodule")
+if(NOT EXISTS "${CMAKE_SOURCE_DIR}/repo4.0")
     message(FATAL_ERROR "Submodule directory does not exist!")
 endif()
 
