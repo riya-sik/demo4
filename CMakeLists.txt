@@ -15,9 +15,14 @@ if(NOT GIT_CHECK EQUAL 0)
     message(FATAL_ERROR "This directory is not a Git repository!")
 endif()
 
+# Check if the submodule directory exists
+if(NOT EXISTS "${CMAKE_SOURCE_DIR}/submodule")
+    message(FATAL_ERROR "Submodule directory does not exist!")
+endif()
+
 # Get the current tag of the submodule
 execute_process(
-    COMMAND git -C submodule/ describe --tags
+    COMMAND git -C ${CMAKE_SOURCE_DIR}/submodule describe --tags
     OUTPUT_VARIABLE CURRENT_TAG
     OUTPUT_STRIP_TRAILING_WHITESPACE
 )
