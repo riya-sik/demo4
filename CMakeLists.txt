@@ -1,40 +1,30 @@
-cmake_minimum_required(VERSION 3.10)
-project(MainProject)
+# Specify minimum CMake version required
+cmake_minimum_required(VERSION 3.22)
 
-# Specify the expected tag of the submodule directly
-set(SUBMODULE_TAG "v1.0.0")  # Change this to your expected submodule tag
+# Define the submodule path (adjusted for your structure)
+set(REPO2_PATH "${CMAKE_SOURCE_DIR}/repo4.0")
 
-# Check if the current directory is a git repository
-execute_process(
-    COMMAND git rev-parse --is-inside-work-tree
-    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-    RESULT_VARIABLE GIT_CHECK
-)
-
-if(NOT GIT_CHECK EQUAL 0)
-    message(FATAL_ERROR "This directory is not a Git repository!")
+# Check if the path exists before executing the command
+if(NOT EXISTS "${REPO2_PATH}")
+    message(FATAL_ERROR "Submodule path '${REPO2_PATH}' does not exist. Please ensure the path is correct.")
 endif()
 
-# Check if the submodule directory exists
-if(NOT EXISTS "${CMAKE_SOURCE_DIR}/repo4.0")
-    message(FATAL_ERROR "Submodule directory does not exist!")
-endif()
+# Step 1: Read expected tag/commit from .gitmodules
+file(READ "${CMAKE_SOURCE_DIR}/.gitmodules" GITMODULES_CONTENTS)
+string(REGEX MATCH "branch = ([^\n]+)" _ ${GITMODULES_CONTENTS})
+set(EXPECTED_COMMIT "${CMAKE_MATCH_1}")
 
-# Get the current tag of the submodule
+# Step 2: Get the current commit of Repo 2 by running a Git command
 execute_process(
-    COMMAND git -C ${CMAKE_SOURCE_DIR}/submodule describe --tags
-    OUTPUT_VARIABLE CURRENT_TAG
+    COMMAND git rev-parse HEAD
+    WORKING_DIRECTORY "${REPO2_PATH}"
+    OUTPUT_VARIABLE CURRENT_COMMIT
     OUTPUT_STRIP_TRAILING_WHITESPACE
 )
 
-# Check if the current tag matches the expected tag
-if(NOT CURRENT_TAG STREQUAL SUBMODULE_TAG)
-    message(FATAL_ERROR "Submodule tag mismatch! Expected: ${SUBMODULE_TAG}, Found: ${CURRENT_TAG}")
+# Step 3: Compare the commits and stop the build if there's a mismatch
+if(NOT "${CURRENT_COMMIT}" STREQUAL "${EXPECTED_COMMIT}")
+    message(FATAL_ERROR "Repo 2 is at commit ${CURRENT_COMMIT}, but expected ${EXPECTED_COMMIT}. Please update the submodule to match the expected version.")
 endif()
 
-# Add the subdirectory for the submodule
-add_subdirectory(submodule)
-
-# Create the main executable
-add_executable(main main.c)
-target_link_libraries(main submodule)
+# Continue with other CMake configurations
