@@ -1,3 +1,5 @@
 [submodule "repo4.0"]
-	path = repo4.0
-	url = https://github.com/riya-sik/repo4.0.git
+    path = repo4.0
+    url = https://github.com/riya-sik/repo4.0.git
+    tag = v1.0
+  # example tag name, replace with your actual tag

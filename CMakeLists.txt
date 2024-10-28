@@ -17,7 +17,9 @@ file(READ "${CMAKE_SOURCE_DIR}/.gitmodules" GITMODULES_CONTENTS)
 
 # Extract the tag information from .gitmodules
 string(REGEX MATCH "tag = ([^\n]+)" _ ${GITMODULES_CONTENTS})
-set(EXPECTED_TAG "${CMAKE_MATCH_1}")
+#message(FATAL_ERROR "${GITMODULES_CONTENTS}")
+
+set(EXPECTED_TAG "${CMAKE_MATCH_1}") # 123
 
 # If there's no tag found, give an error message
 if(NOT EXPECTED_TAG)

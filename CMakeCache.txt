@@ -247,6 +247,15 @@ Project_IS_TOP_LEVEL:STATIC=ON
 Project_SOURCE_DIR:STATIC=/home/riya/demo4
 
 //Value Computed by CMake
+RepoChecker_BINARY_DIR:STATIC=/home/riya/demo4
+
+//Value Computed by CMake
+RepoChecker_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+RepoChecker_SOURCE_DIR:STATIC=/home/riya/demo4
+
+//Value Computed by CMake
 demo4_BINARY_DIR:STATIC=/home/riya/demo4
 
 //Value Computed by CMake
