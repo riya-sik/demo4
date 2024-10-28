@@ -149,7 +149,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=Project
+CMAKE_PROJECT_NAME:STATIC=MyProject
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -227,6 +227,15 @@ MainProject_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
 MainProject_SOURCE_DIR:STATIC=/home/riya/demo4
+
+//Value Computed by CMake
+MyProject_BINARY_DIR:STATIC=/home/riya/demo4
+
+//Value Computed by CMake
+MyProject_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+MyProject_SOURCE_DIR:STATIC=/home/riya/demo4
 
 //Value Computed by CMake
 Project_BINARY_DIR:STATIC=/home/riya/demo4
