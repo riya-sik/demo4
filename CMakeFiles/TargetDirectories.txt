@@ -1,2 +1,0 @@
-/home/riya/demo4/CMakeFiles/edit_cache.dir
-/home/riya/demo4/CMakeFiles/rebuild_cache.dir

@@ -57,7 +57,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = /home/riya/demo4
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/riya/demo4
+CMAKE_BINARY_DIR = /home/riya/demo4/build
 
 #=============================================================================
 # Directory level rules for the build root directory
